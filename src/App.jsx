@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { TaskInput } from './Components/taskInput/TaskInput'
+
 import './App.css'
 
 export function App() {
@@ -6,7 +8,7 @@ export function App() {
 
   return (
     <>
-      <h1>Yo soy app</h1>
+      <TaskInput/>
     </>
   )
 }
