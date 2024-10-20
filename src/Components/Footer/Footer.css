@@ -1,0 +1,56 @@
+
+/* Estilos del footer y los filtros */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+    margin-top: 1.25rem;
+    font-size: 1.2rem;
+}
+.filters {
+    display: flex;
+    gap: 5.5rem;
+    
+}
+a:hover {
+    border: 0.0625rem solid rgb(10, 10, 10);
+    border-radius: 0.3rem;
+}
+.filters a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #090909;
+    padding: 3%;
+    font-size: 1.2rem;
+}
+.filters a.selected {
+    font-weight: bold;
+    text-decoration: underline;
+    
+}
+/* Botón para eliminar completadas */
+footer button {
+    background-color: #fefbfb;
+    color: rgb(6, 6, 6);
+    padding: 0.3125rem 0.625rem;
+    border: none;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+
+}
+
+footer button:hover {
+    background-color: #ff1a1a;
+    color: #423f3f;
+    border-radius: 1rem;
+    padding: 0.4rem;
+}
+
+/* Estilos generales para botones y tareas */
+button {
+    font-size: 1rem;
+    cursor: pointer;
+}

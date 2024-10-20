@@ -1,0 +1,57 @@
+
+/* Estilos para la lista de tareas */
+.task-list {
+    list-style-type: none;
+    width: 66rem;
+    height: 5.0rem;
+    padding: 0.05rem 0rem 10rem 1rem;
+    color: rgb(73, 73, 73);
+    overflow-y: auto;
+}
+.task-list input[type="checkbox"] {
+    width: 1.8rem;   /* Ajusta el tamaño del checkbox  */
+    height: 1.8rem;  /* Ajusta el tamaño del checkbox  */
+    border-radius: 50%;
+    border: 0.125rem solid #ccc;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+}
+.task-list input[type="checkbox"]:checked::after {
+    content: '✔'; /* El símbolo */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;  /* Ajusta el tamaño del chulito  */
+    color: green;     /* Color del checkmark */
+    font-weight: bold;
+}
+.task-list li {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1.8rem;
+    font-size: 2.3rem;
+    background-color: white;
+    padding: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+}
+.task-list li.completed {
+    text-decoration: line-through;
+    color: #828080;
+    
+}
+/* Estilos para los botones de acción de cada tarea */
+.task-list li button {
+    background: none;
+    color: white;
+    border: 4rem;
+    font-size: 1rem;
+    padding: 0.4rem;
+    cursor:none;
+    
+}

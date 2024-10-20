@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../TaskInput/TaskInput.css'
 
 export const TaskInput = ({ addTask }) => {
     const [input, setInput] = useState('');

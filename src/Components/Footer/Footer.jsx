@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+import '../Footer/Footer.css'
 export const Footer = ({ tasksCount, filter, clearCompleted }) => {
     return (
         <footer>

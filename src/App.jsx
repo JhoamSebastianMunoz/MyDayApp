@@ -57,11 +57,14 @@ export const App = () => {
 
     return (
         <div className="app">
-            <h1>My Day</h1>
-            <h4>All my tasks in one place</h4>
-            <TaskInput addTask={addTask} />
+            <div className='container-header' >
+                <p className='title' >My Day</p>
+                <p className='subtitle' >All my tasks in one place</p>
+                <TaskInput addTask={addTask} />
+            </div>
             {tasks.length > 0 && (
                 <>
+                <div className='container-main-footer' >
                     <TaskList 
                         tasks={filteredTasks} 
                         toggleTaskCompletion={toggleTaskCompletion} 
@@ -73,7 +76,9 @@ export const App = () => {
                         filter={filter} 
                         clearCompleted={clearCompleted} 
                     />
+                </div>
                 </>
+                
             )}
         </div>
     );
