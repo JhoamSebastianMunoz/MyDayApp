@@ -3,6 +3,7 @@ import { BrowserRouter, useLocation } from 'react-router-dom';
 import { TaskInput } from './Components/TaskInput/TaskInput';
 import { TaskList } from './Components/TaskList/TaskList';
 import { Footer } from './Components/Footer/Footer';
+import '../src/App.css'
 
 export const App = () => {
     const [tasks, setTasks] = useState([]);
@@ -57,7 +58,7 @@ export const App = () => {
         <div className="app">
             <h1>My Day</h1>
             <h4>All my tasks in one place</h4>
-            <TaskInput addTask={addTask} />
+            <TaskInput className="task-input" addTask={addTask} />
             {tasks.length > 0 && (
                 <>
                     <TaskList 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-export const Footer = ({ filter, clearCompleted }) => {
+export const Footer = ({  clearCompleted }) => {
     return (
         <footer>
             <div className="filters">
