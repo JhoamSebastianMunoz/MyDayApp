@@ -7,14 +7,12 @@ import '../src/App.css'
 
 export const App = () => {
     const [tasks, setTasks] = useState([]);
-    
-    
+
     useEffect(() => {
         const storedTasks = JSON.parse(localStorage.getItem('mydayapp-reactjs'));
         if (storedTasks) setTasks(storedTasks);
     }, []);
 
-    
     useEffect(() => {
         localStorage.setItem('mydayapp-reactjs', JSON.stringify(tasks));
     }, [tasks]);
@@ -54,11 +52,14 @@ export const App = () => {
     const filter = location.pathname.replace('/', '') || 'all';
     const filteredTasks = filterTasks(filter);
 
+    // Calcular el número de tareas pendientes
+    const pendingTasksCount = tasks.filter(task => !task.completed).length;
+
     return (
         <div className="app">
             <h1>My Day</h1>
             <h4>All my tasks in one place</h4>
-            <TaskInput className="task-input" addTask={addTask} />
+            <TaskInput addTask={addTask} />
             {tasks.length > 0 && (
                 <>
                     <TaskList 
@@ -68,6 +69,7 @@ export const App = () => {
                         deleteTask={deleteTask}
                     />
                     <Footer 
+                        tasksCount={pendingTasksCount}  // Pasar el contador de tareas pendientes al Footer
                         filter={filter} 
                         clearCompleted={clearCompleted} 
                     />

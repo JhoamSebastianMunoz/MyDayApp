@@ -1,9 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-export const Footer = ({  clearCompleted }) => {
+export const Footer = ({ tasksCount, filter, clearCompleted }) => {
     return (
         <footer>
+            <span className="task-count">
+                {tasksCount} {tasksCount === 1 ? 'Item' : 'Items'} left
+            </span>
+            
             <div className="filters">
                 <NavLink exact to="/all" activeClassName="selected">
                     All
@@ -15,7 +19,8 @@ export const Footer = ({  clearCompleted }) => {
                     Completed
                 </NavLink>
             </div>
-            <button onClick={clearCompleted}>Clear Completed</button>
+
+            <button onClick={clearCompleted}>Clear completed</button>
         </footer>
     );
 };
