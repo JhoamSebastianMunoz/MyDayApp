@@ -1,12 +1,14 @@
-form input{
-    width: 66rem;
+
+form input {
+    width: 93%; 
     height: 5.2rem;
     border-radius: 0.6rem;
     font-size: 2rem;
     padding: 0 0 0 2rem;
-    border-color: #ccc;
+    border: 0.1rem solid #ccc;
+    box-sizing: border-box;
 }
-/* Estilos para el input de tareas */
+
 .task-input {
     width: 100%;
     padding: 0.7rem;

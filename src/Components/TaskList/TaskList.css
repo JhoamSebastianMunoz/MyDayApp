@@ -1,57 +1,72 @@
-
-/* Estilos para la lista de tareas */
 .task-list {
     list-style-type: none;
-    width: 66rem;
-    height: 5.0rem;
-    padding: 0.05rem 0rem 10rem 1rem;
+    width: 95%; 
+    padding: 1rem;
     color: rgb(73, 73, 73);
     overflow-y: auto;
+    max-height: 20rem;
 }
+
 .task-list input[type="checkbox"] {
-    width: 1.8rem;   /* Ajusta el tamaño del checkbox  */
-    height: 1.8rem;  /* Ajusta el tamaño del checkbox  */
+    width: 1.5rem;
+    height: 1.5rem;
     border-radius: 50%;
     border: 0.125rem solid #ccc;
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     cursor: pointer;
     outline: none;
     position: relative;
 }
+
 .task-list input[type="checkbox"]:checked::after {
-    content: '✔'; /* El símbolo */
+    content: '✔';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.5rem;  /* Ajusta el tamaño del chulito  */
-    color: green;     /* Color del checkmark */
+    font-size: 1.5rem;
+    color: green;
     font-weight: bold;
 }
+
 .task-list li {
     display: flex;
     justify-content: start;
     align-items: center;
     gap: 1.8rem;
-    font-size: 2.3rem;
+    font-size: 2.3rem; 
     background-color: white;
     padding: 0.5rem;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
 }
+/* Ocultar el botón de eliminar por defecto */
+.task-list li button {
+    background: none;
+    color: rgb(248, 243, 243);
+    border: none;
+    font-size: 1rem;
+    padding: 0.4rem;
+    cursor: none;
+    opacity: 0;  /* Oculta el botón inicialmente */
+    transition: opacity 0.3s ease-in-out; /* Añade una transición suave */
+    position: absolute;
+    right: 18rem; /* Colocar el botón a la derecha del li */
+}
+
+/* Mostrar el botón al hacer hover sobre la tarea */
+.task-list li:hover button {
+    opacity: 1;  /* Mostrar el botón cuando se hace hover en el li */
+    cursor: pointer;
+    color: #090909;
+    background-color: red;
+}
+
+/* Efecto hover en el li para resaltarlo */
+.task-list li:hover {
+    background-color: #f1f1f1; /* Cambia el color de fondo al hacer hover */
+}
+
 .task-list li.completed {
     text-decoration: line-through;
     color: #828080;
-    
-}
-/* Estilos para los botones de acción de cada tarea */
-.task-list li button {
-    background: none;
-    color: white;
-    border: 4rem;
-    font-size: 1rem;
-    padding: 0.4rem;
-    cursor:none;
-    
 }
