@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { TaskInput } from './Components/TaskInput/TaskInput';
 import { TaskList } from './Components/TaskList/TaskList';
 import { Footer } from './Components/Footer/Footer';
-import '../src/App.css'
+import './App.css';
 
 export const App = () => {
     const [tasks, setTasks] = useState([]);
@@ -52,33 +52,40 @@ export const App = () => {
     const filter = location.pathname.replace('/', '') || 'all';
     const filteredTasks = filterTasks(filter);
 
-    // Calcular el número de tareas pendientes
     const pendingTasksCount = tasks.filter(task => !task.completed).length;
+
+    const today = new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+    });
 
     return (
         <div className="app">
-            <div className='container-header' >
-                <p className='title' >My Day</p>
-                <p className='subtitle' >All my tasks in one place</p>
+            <header className="app-header">
+                <p className="app-name">My Day</p>
+                <h1 className="app-date">{today}</h1>
+                <p className="app-tagline">Capture what you want to get done today.</p>
                 <TaskInput addTask={addTask} />
-            </div>
-            {tasks.length > 0 && (
-                <>
-                <div className='container-main-footer' >
-                    <TaskList 
-                        tasks={filteredTasks} 
-                        toggleTaskCompletion={toggleTaskCompletion} 
+            </header>
+
+            {tasks.length > 0 ? (
+                <section className="app-body" aria-label="Tasks">
+                    <TaskList
+                        tasks={filteredTasks}
+                        toggleTaskCompletion={toggleTaskCompletion}
                         updateTask={updateTask}
                         deleteTask={deleteTask}
                     />
-                    <Footer 
-                        tasksCount={pendingTasksCount}  // Pasar el contador de tareas pendientes al Footer
-                        filter={filter} 
-                        clearCompleted={clearCompleted} 
+                    <Footer
+                        tasksCount={pendingTasksCount}
+                        clearCompleted={clearCompleted}
                     />
-                </div>
-                </>
-                
+                </section>
+            ) : (
+                <p className="app-empty">
+                    Nothing on the list yet. Add the first task above.
+                </p>
             )}
         </div>
     );

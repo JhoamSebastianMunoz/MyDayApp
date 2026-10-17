@@ -19,31 +19,54 @@ export const TaskList = ({ tasks, toggleTaskCompletion, updateTask, deleteTask }
         setEditingId(null);
     };
 
+    if (tasks.length === 0) {
+        return <p className="task-empty">No tasks to show with this filter.</p>;
+    }
+
     return (
         <ul className="task-list">
             {tasks.map((task) => (
-                <li key={task.id} className={task.completed ? 'completed' : ''}>
-                    <input 
-                        type="checkbox" 
-                        checked={task.completed} 
+                <li key={task.id} className={task.completed ? 'task-row task-row--done' : 'task-row'}>
+                    <input
+                        id={`task-${task.id}`}
+                        className="task-row__check"
+                        type="checkbox"
+                        checked={task.completed}
                         onChange={() => toggleTaskCompletion(task.id)}
                     />
                     {editingId === task.id ? (
-                        <input 
-                            type="text" 
-                            value={editText} 
-                            onChange={(e) => setEditText(e.target.value)} 
-                            onBlur={() => saveEdit(task.id)} 
-                            onKeyDown={(e) => e.key === 'Enter' ? saveEdit(task.id) : e.key === 'Escape' ? cancelEdit() : null} 
-                            autoFocus 
+                        <input
+                            className="task-row__edit"
+                            type="text"
+                            value={editText}
+                            onChange={(e) => setEditText(e.target.value)}
+                            onBlur={() => saveEdit(task.id)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') saveEdit(task.id);
+                                if (e.key === 'Escape') cancelEdit();
+                            }}
+                            aria-label={`Edit "${task.title}"`}
+                            autoFocus
                         />
                     ) : (
-                        <label onDoubleClick={() => handleEdit(task)}>{task.title}</label>
+                        <label
+                            className="task-row__label"
+                            htmlFor={`task-${task.id}`}
+                            onDoubleClick={() => handleEdit(task)}
+                            title="Double-click to edit"
+                        >
+                            {task.title}
+                        </label>
                     )}
-                    <button className="destroy" onClick={() => deleteTask(task.id)}>Eliminar</button>
+                    <button
+                        className="task-row__delete"
+                        onClick={() => deleteTask(task.id)}
+                        aria-label={`Delete "${task.title}"`}
+                    >
+                        Delete
+                    </button>
                 </li>
             ))}
         </ul>
     );
 };
-
