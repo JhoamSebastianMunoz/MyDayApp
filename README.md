@@ -47,8 +47,8 @@ La aplicación está desplegada en Vercel: **https://my-day-app-mu.vercel.app**
 ### Instalación
 
 ```bash
-git clone https://github.com/JhoamSebastianMunoz/MyDayApp.git
-cd MyDayApp
+git clone https://github.com/JhoamSebastianMunoz/my-day-react.git
+cd my-day-react
 npm install
 ```
 
@@ -82,7 +82,7 @@ npm run preview
 ## Estructura del proyecto
 
 ```
-MyDayApp/
+my-day-react/
 ├── public/
 ├── src/
 │   ├── Components/
